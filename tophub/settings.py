@@ -67,6 +67,9 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    'tophub.pipelines.TophubPipeline': 300,
 #}
+ITEM_PIPELINES = {
+    'tophub.pipelines.RedisPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -97,3 +100,9 @@ FEED_EXPORT_ENCODING = 'utf-8'
 
 # specifies the maximum number of responses to crawl
 CLOSESPIDER_PAGECOUNT = 5
+
+
+# Redis config
+REDIS_URI = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
