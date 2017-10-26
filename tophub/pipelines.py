@@ -7,6 +7,7 @@
 
 import redis
 import json
+from datetime import datetime
 
 
 class TophubPipeline(object):
@@ -35,11 +36,14 @@ class RedisPipeline(object):
         self.redis_client = redis.StrictRedis(
             host=self.redis_uri, port=self.redis_port, db=self.redis_db)
         # delete old keys
-        self.redis_client.delete(spider.name)
+        self.redis_client.delete("{}:data".format(spider.name),
+                                 "{}:timestamp".format(spider.name))
 
     def close_spider(self, spider):
-        pass
+        self.redis_client.set("{}:timestamp".format(spider.name),
+                              datetime.utcnow().timestamp())
 
     def process_item(self, item, spider):
-        self.redis_client.rpush(spider.name, json.dumps(dict(item)))
+        self.redis_client.rpush("{}:data".format(spider.name),
+                                json.dumps(dict(item)))
         return item

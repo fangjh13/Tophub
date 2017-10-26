@@ -6,6 +6,8 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import logging
+import random
 
 
 class TophubSpiderMiddleware(object):
@@ -54,3 +56,24 @@ class TophubSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class RandomUserAgentMiddleware(object):
+    ''' random choice User-Agent '''
+
+    def __init__(self, settings):
+        self.settings = settings
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        settings = crawler.settings
+        o = cls(settings)
+        return o
+
+    def process_request(self, request, spider):
+        ua = random.choice(self.settings.get('USER_AGENT_LIST'))
+        if ua:
+            request.headers.setdefault('User-Agent', ua)
+            logging.debug(
+                'User-Agent: {} {}'.format(request.headers.get('User-Agent'),
+                                           request))
