@@ -15,3 +15,11 @@ class RedditItem(scrapy.Item):
     link = scrapy.Field()
     scores = scrapy.Field()
     comments = scrapy.Field()
+
+
+class GitHubItem(scrapy.Item):
+    project = scrapy.Field()
+    link = scrapy.Field()
+    remark = scrapy.Field()
+    language = scrapy.Field()
+    stars = scrapy.Field()

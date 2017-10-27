@@ -27,12 +27,3 @@ class RedditSpider(scrapy.Spider):
             'span.next-button a::attr(href)').extract_first()
         if next_page:
             yield response.follow(next_page, callback=self.parse)
-
-
-class GitHubSpider(scrapy.Spider):
-    ''' craw github trending '''
-    name = 'github'
-    start_urls = ['https://github.com/trending']
-
-    def parse(self, response):
-        pass
