@@ -23,3 +23,10 @@ class GitHubItem(scrapy.Item):
     remark = scrapy.Field()
     language = scrapy.Field()
     stars = scrapy.Field()
+
+
+class JueJinItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    collections = scrapy.Field()
+    tag = scrapy.Field()
