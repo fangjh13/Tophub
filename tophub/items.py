@@ -37,3 +37,10 @@ class DouBanItem(scrapy.Item):
     link = scrapy.Field()
     author = scrapy.Field()
     image = scrapy.Field()
+
+
+class SegmentFaultItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    collections = scrapy.Field()
+    tag = scrapy.Field()
