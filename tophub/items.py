@@ -30,3 +30,10 @@ class JueJinItem(scrapy.Item):
     link = scrapy.Field()
     collections = scrapy.Field()
     tag = scrapy.Field()
+
+
+class DouBanItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    author = scrapy.Field()
+    image = scrapy.Field()

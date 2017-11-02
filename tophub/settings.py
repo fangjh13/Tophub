@@ -98,6 +98,9 @@ ITEM_PIPELINES = {
 
 
 
+# Log Level
+LOG_LEVEL = 'WARNING'
+
 
 # export JSON output to UTF-8
 FEED_EXPORT_ENCODING = 'utf-8'
