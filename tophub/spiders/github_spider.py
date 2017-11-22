@@ -19,7 +19,7 @@ class GitHubSpider(scrapy.Spider):
         for p in response.xpath('//li[contains(@class, "col-12")]'):
             item = GitHubItem()
             item['project'] = p.xpath('.//h3/a/text()').extract()[-1].strip()
-            item['link'] = 'https://github.com/trending' \
+            item['link'] = 'https://github.com' \
                 + p.xpath('.//h3/a/@href').extract_first().strip()
             item['remark'] = handle_none(
                 p.xpath('.//div[@class="py-1"]/p/text()').extract_first())

@@ -12,9 +12,11 @@ class DouBanSpiderNonFiction(scrapy.Spider):
     def parse(self, response):
         item = DouBanItem()
         for book in response.xpath('//li[contains(@class, "media clearfix")]'):
-            item['image'] = book.xpath(
+            book_image = book.xpath(
                 './/div[contains(@class, "media__img")]/a/img/@src'
             ).extract_first()
+            item['image'] = book_image.replace('/spic/', '/lpic/') \
+                if book_image else book_image
             item['title'] = book.xpath(
                 './/h2[@class="clearfix"]/a/text()').extract_first()
             item['link'] = book.xpath(
@@ -33,9 +35,11 @@ class DouBanSpiderFiction(scrapy.Spider):
     def parse(self, response):
         item = DouBanItem()
         for book in response.xpath('//li[contains(@class, "media clearfix")]'):
-            item['image'] = book.xpath(
+            book_image = book.xpath(
                 './/div[contains(@class, "media__img")]/a/img/@src'
             ).extract_first()
+            item['image'] = book_image.replace('/spic/', '/lpic/') \
+                if book_image else book_image
             item['title'] = book.xpath(
                 './/h2[@class="clearfix"]/a/text()').extract_first()
             item['link'] = book.xpath(
