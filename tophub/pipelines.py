@@ -16,7 +16,12 @@ class TophubPipeline(object):
 
 
 class RedisPipeline(object):
-    ''' save data to Redis '''
+    '''
+    save data to Redis
+    redis结构:
+    爬取名称:timestamp ---> 爬取的时间 type为String
+    爬取名称:data  ---> 数据 type为List
+    '''
 
     def __init__(self, redis_uri, redis_port, redis_db):
         self.redis_uri = redis_uri
