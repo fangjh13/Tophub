@@ -44,3 +44,10 @@ class SegmentFaultItem(scrapy.Item):
     link = scrapy.Field()
     collections = scrapy.Field()
     tag = scrapy.Field()
+
+
+class HackerNewsItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    comments = scrapy.Field()
+    origin = scrapy.Field()
