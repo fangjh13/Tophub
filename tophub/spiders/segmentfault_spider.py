@@ -19,6 +19,8 @@ class SegmentFaultSpider(scrapy.Spider):
                 i.css('a.mr10::attr(href)').extract_first().strip()
             item['collections'] = i.css('span.stream__item-zan-number::text'
                                         ).extract_first()
+            item['tag'] = i.css(
+                'p.news__item-meta a.ml10::text').extract_first()
 
             yield item
 
