@@ -11,12 +11,14 @@ from tophub.spiders.douban_spider import DouBanSpiderFiction, \
     DouBanSpiderNonFiction
 from tophub.spiders.reddit_spider import RedditSpider
 from tophub.spiders.segmentfault_spider import SegmentFaultSpider
+from tophub.spiders.hacker_news import HackerNewsSpider
 
 
 configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})
 runner = CrawlerRunner(get_project_settings())
 runner.crawl(GitHubSpider)
 runner.crawl(JueJinSpider)
+runner.crawl(HackerNewsSpider)
 runner.crawl(DouBanSpiderFiction)
 runner.crawl(DouBanSpiderNonFiction)
 runner.crawl(RedditSpider)
