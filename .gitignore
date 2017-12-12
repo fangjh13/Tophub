@@ -1,5 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+tophub/__pycache__/
+tophub/spiders/__pycache__/
 *.py[cod]
 *$py.class
 
