@@ -38,11 +38,10 @@ class RedisPipeline(object):
 
     def open_spider(self, spider):
         # redis module
-        self.redis_client = redis.StrictRedis(
+        self.redis_client = redis.Redis(
             host=self.redis_uri, port=self.redis_port, db=self.redis_db)
         # delete old keys
-        self.redis_client.delete("{}:data".format(spider.name),
-                                 "{}:timestamp".format(spider.name))
+        self.redis_client.delete("{}:data".format(spider.name))
 
     def close_spider(self, spider):
         self.redis_client.set("{}:timestamp".format(spider.name),
