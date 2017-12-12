@@ -100,6 +100,7 @@ ITEM_PIPELINES = {
 
 # Log Level
 LOG_LEVEL = 'WARNING'
+# LOG_LEVEL = 'DEBUG'
 
 
 # export JSON output to UTF-8
