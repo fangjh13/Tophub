@@ -11,7 +11,7 @@ class JueJinSpider(scrapy.Spider):
     start_urls = ['https://juejin.im/explore/all?sort=popular']
 
     def parse(self, response):
-        for item in response.xpath('//div[contains(@class, "content-box")]'):
+        for item in response.xpath('//div[contains(@class, "info-box")]'):
             rs = JueJinItem()
             tags = item.xpath('..//li[contains(@class, "item tag")]/a/text()'
                               ).extract()
